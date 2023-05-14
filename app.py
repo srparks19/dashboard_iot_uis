@@ -6,9 +6,9 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/buttons')
+@app.route('/sensor')
 def buttons():
-    return render_template('buttons.html')
+    return render_template('sensor.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
