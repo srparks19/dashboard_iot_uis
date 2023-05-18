@@ -23,6 +23,15 @@
     <!-- mapa -->
     <script src="https://cdn.jsdelivr.net/npm/ol@v7.3.0/dist/ol.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.3.0/ol.css">
+    <style>
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+    </style>
 
 </head>
 
@@ -162,19 +171,95 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2 bg-dark">
-                                <div class="card-body bg-dark">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-white text-uppercase mb-1">
-                                                ejemplo</div>
-                                            <div class="h5 mb-0 font-weight-bold text-white">ejemplo</div>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="showSection('section1')">Representación grafica</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="showSection('section2')">Representacion geografica</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="showSection('section3')">Datos</a>
+                        </li>
+                    </ul>
+                    <br>
+
+                    <div id="section1" class="section active">
+                        <!-- Contenido de la sección 1 -->
+                        <!-- Content Row -->
+
+                        <div class="row">
+
+                            <!-- Area Chart -->
+                            <div class="col-xl-8 col-lg-7">
+                                <div class="card shadow mb-4 bg-dark">
+                                    <!-- Card Header - Dropdown -->
+                                    <div
+                                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-dark">
+                                        <h6 class="m-0 font-weight-bold text-white">Earnings Overview</h6>
+                                        <div class="dropdown no-arrow">
+                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-white"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                                aria-labelledby="dropdownMenuLink">
+                                                <div class="dropdown-header">Dropdown Header:</div>
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                            </div>
                                         </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-solid fa-burst fa-2x text-white"></i>
+                                    </div>
+                                    <!-- Card Body -->
+                                    <div class="card-body">
+                                        <div class="chart-area">
+                                            <canvas id="myAreaChart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pie Chart -->
+                            <div class="col-xl-4 col-lg-5">
+                                <div class="card shadow mb-4 bg-dark">
+                                    <!-- Card Header - Dropdown -->
+                                    <div
+                                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-dark">
+                                        <h6 class="m-0 font-weight-bold text-white">Revenue Sources</h6>
+                                        <div class="dropdown no-arrow">
+                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-white"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                                aria-labelledby="dropdownMenuLink">
+                                                <div class="dropdown-header">Dropdown Header:</div>
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Card Body -->
+                                    <div class="card-body">
+                                        <div class="chart-pie pt-4 pb-2">
+                                            <canvas id="myPieChart"></canvas>
+                                        </div>
+                                        <div class="mt-4 text-center small">
+                                            <span class="mr-2 text-white">
+                                                <i class="fas fa-circle text-primary"></i> Direct
+                                            </span>
+                                            <span class="mr-2 text-white">
+                                                <i class="fas fa-circle text-success"></i> Social
+                                            </span>
+                                            <span class="mr-2 text-white">
+                                                <i class="fas fa-circle text-info"></i> Referral
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -182,227 +267,167 @@
                         </div>
                     </div>
 
-                    <!-- Content Row -->
+                    <div id="section2" class="section">
+                        <!-- Contenido de la sección 2 -->
+                        <!-- Content Row -->
 
-                    <div class="row">
+                        <div class="row">
 
-                        <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7">
-                            <div class="card shadow mb-4 bg-dark">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-dark">
-                                    <h6 class="m-0 font-weight-bold text-white">Earnings Overview</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-white"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
+                            <!-- Area Chart -->
+                            <div class="col-xl-12 col-lg-7">
+                                <div class="card shadow mb-4 bg-dark">
+                                    <!-- Card Header - Dropdown -->
+                                    <div
+                                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-dark">
+                                        <h6 class="m-0 font-weight-bold text-white">Mapa geografico de los niveles de
+                                            calidad</h6>
+                                        <div class="dropdown no-arrow">
+                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-white"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                                aria-labelledby="dropdownMenuLink">
+                                                <div class="dropdown-header">Dropdown Header:</div>
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                    <!-- Card Body -->
+                                    <div class="card-body">
+                                        <!-- agregar mapa de google -->
+                                        <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31672.143832528614!2d-73.11803476571592!3d7.123913167518025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e68156dacac69f9%3A0x146fd58e59cbf254!2sPorter%C3%ADa%20principal%20UIS!5e0!3m2!1ses-419!2sco!4v1684099529017!5m2!1ses-419!2sco" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+                                        <div id="map" style="width: 100%; height: 400px;"></div>
 
-                        <!-- Pie Chart -->
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4 bg-dark">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-dark">
-                                    <h6 class="m-0 font-weight-bold text-white">Revenue Sources</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-white"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
-                                    </div>
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2 text-white">
-                                            <i class="fas fa-circle text-primary"></i> Direct
-                                        </span>
-                                        <span class="mr-2 text-white">
-                                            <i class="fas fa-circle text-success"></i> Social
-                                        </span>
-                                        <span class="mr-2 text-white">
-                                            <i class="fas fa-circle text-info"></i> Referral
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                        <script>
+                                            // Función para inicializar el mapa
+                                            function initMap() {
+                                                // Coordenadas de la UIS
+                                                const uisCoordinates = [-73.120787, 7.140800];
 
-                    <!-- Content Row -->
+                                                // Datos de ejemplo para el mapa de calor
+                                                const heatmapData = [
+                                                    { lon: -73.120787, lat: 7.140800, value: 10 },
+                                                    { lon: -73.121000, lat: 7.140500, value: 5 },
+                                                    { lon: -73.120500, lat: 7.141000, value: 8 },
+                                                    // ... más datos de ejemplo
+                                                ];
 
-                    <div class="row">
-
-                        <!-- Area Chart -->
-                        <div class="col-xl-12 col-lg-7">
-                            <div class="card shadow mb-4 bg-dark">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-dark">
-                                    <h6 class="m-0 font-weight-bold text-white">Mapa geografico de los niveles de calidad</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-white"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <!-- agregar mapa de google -->
-                                    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31672.143832528614!2d-73.11803476571592!3d7.123913167518025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e68156dacac69f9%3A0x146fd58e59cbf254!2sPorter%C3%ADa%20principal%20UIS!5e0!3m2!1ses-419!2sco!4v1684099529017!5m2!1ses-419!2sco" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
-                                    <div id="map" style="width: 100%; height: 400px;"></div>
-
-                                    <script>
-                                        // Función para inicializar el mapa
-                                        function initMap() {
-                                            // Coordenadas de la UIS
-                                            const uisCoordinates = [-73.120787, 7.140800];
-                                
-                                            // Datos de ejemplo para el mapa de calor
-                                            const heatmapData = [
-                                                { lon: -73.120787, lat: 7.140800, value: 10 },
-                                                { lon: -73.121000, lat: 7.140500, value: 5 },
-                                                { lon: -73.120500, lat: 7.141000, value: 8 },
-                                                // ... más datos de ejemplo
-                                            ];
-                                
-                                            // Crear un mapa
-                                            const map = new ol.Map({
-                                                target: 'map',
-                                                view: new ol.View({
-                                                    center: ol.proj.fromLonLat(uisCoordinates),
-                                                    zoom: 15
-                                                })
-                                            });
-                                
-                                            // Capa base de OpenStreetMap
-                                            const osmLayer = new ol.layer.Tile({
-                                                source: new ol.source.OSM()
-                                            });
-                                
-                                            // Capa de mapa de calor
-                                            const heatLayer = new ol.layer.Heatmap({
-                                                source: new ol.source.Vector({
-                                                    features: heatmapData.map(data => {
-                                                        const feature = new ol.Feature({
-                                                            geometry: new ol.geom.Point(ol.proj.fromLonLat([data.lon, data.lat])),
-                                                            weight: data.value
-                                                        });
-                                                        return feature;
+                                                // Crear un mapa
+                                                const map = new ol.Map({
+                                                    target: 'map',
+                                                    view: new ol.View({
+                                                        center: ol.proj.fromLonLat(uisCoordinates),
+                                                        zoom: 15
                                                     })
-                                                }),
-                                                blur: 15,
-                                                radius: 10
-                                            });
-                                
-                                            // Añadir las capas al mapa
-                                            map.addLayer(osmLayer);
-                                            map.addLayer(heatLayer);
-                                        }
-                                        // Llamar a la función de inicialización del mapa cuando se cargue la página
-                                        window.onload = initMap;
-                                    </script>
+                                                });
+
+                                                // Capa base de OpenStreetMap
+                                                const osmLayer = new ol.layer.Tile({
+                                                    source: new ol.source.OSM()
+                                                });
+
+                                                // Capa de mapa de calor
+                                                const heatLayer = new ol.layer.Heatmap({
+                                                    source: new ol.source.Vector({
+                                                        features: heatmapData.map(data => {
+                                                            const feature = new ol.Feature({
+                                                                geometry: new ol.geom.Point(ol.proj.fromLonLat([data.lon, data.lat])),
+                                                                weight: data.value
+                                                            });
+                                                            return feature;
+                                                        })
+                                                    }),
+                                                    blur: 15,
+                                                    radius: 10
+                                                });
+
+                                                // Añadir las capas al mapa
+                                                map.addLayer(osmLayer);
+                                                map.addLayer(heatLayer);
+                                            }
+                                            // Llamar a la función de inicialización del mapa cuando se cargue la página
+                                            window.onload = initMap;
+                                        </script>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Content Row -->
+                    <div id="section3" class="section">
+                        <!-- Contenido de la sección 3 -->
+                        <!-- Content Row -->
 
-                    <div class="row">
+                        <div class="row">
 
-                        <!-- Area Chart -->
-                        <div class="col-xl-12 col-lg-7">
-                            <div class="card shadow mb-4 bg-dark">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-dark">
-                                    <h6 class="m-0 font-weight-bold text-white">Mediciones</h6>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <table class="table text-white">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Id</th>
-                                                <th scope="col">Oxigeno</th>
-                                                <th scope="col">CO<sub>2</sub></th>
-                                                <th scope="col">Hora</th>
-                                                <th scope="col">Coordenada</th>
-                                                <th scope="col">ID sensor</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>texto</td>
-                                                <td>texto</td>
-                                                <td>texto</td>
-                                                <td>texto</td>
-                                                <td>texto</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>texto</td>
-                                                <td>texto</td>
-                                                <td>texto</td>
-                                                <td>texto</td>
-                                                <td>texto</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>texto</td>
-                                                <td>texto</td>
-                                                <td>texto</td>
-                                                <td>texto</td>
-                                                <td>texto</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                            <!-- Area Chart -->
+                            <div class="col-xl-12 col-lg-7">
+                                <div class="card shadow mb-4 bg-dark">
+                                    <!-- Card Header - Dropdown -->
+                                    <div
+                                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-dark">
+                                        <h6 class="m-0 font-weight-bold text-white">Mediciones</h6>
+                                    </div>
+                                    <!-- Card Body -->
+                                    <div class="card-body">
+                                        <table class="table text-white">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Id</th>
+                                                    <th scope="col">Oxigeno</th>
+                                                    <th scope="col">CO<sub>2</sub></th>
+                                                    <th scope="col">Hora</th>
+                                                    <th scope="col">Coordenada</th>
+                                                    <th scope="col">ID sensor</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>texto</td>
+                                                    <td>texto</td>
+                                                    <td>texto</td>
+                                                    <td>texto</td>
+                                                    <td>texto</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>texto</td>
+                                                    <td>texto</td>
+                                                    <td>texto</td>
+                                                    <td>texto</td>
+                                                    <td>texto</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>texto</td>
+                                                    <td>texto</td>
+                                                    <td>texto</td>
+                                                    <td>texto</td>
+                                                    <td>texto</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <script>
+                        function showSection(sectionId) {
+                            var sections = document.getElementsByClassName('section');
+                            for (var i = 0; i < sections.length; i++) {
+                                sections[i].classList.remove('active');
+                            }
+                            document.getElementById(sectionId).classList.add('active');
+                        }
+                    </script>
                 </div>
                 <!-- /.container-fluid -->
 
