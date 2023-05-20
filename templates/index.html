@@ -57,21 +57,23 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
+            {% for topic_values in topics_values %}
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Estacion 1</span>
+                    <span>{{ topic_values|dictsort|first|first }}</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Dispositivos:</h6>
-                        <a class="collapse-item" href="/sensor">Sensor CO<sub>2</sub></a>
-                        <a class="collapse-item" href="/sensor">Sensor O<sub>3</sub></a>
-                        <a class="collapse-item" href="/sensor">Sensor CO</a>
+                        {% for value in topic_values|dictsort|first|last %}
+                        <a class="collapse-item" href="/sensor">{{ value }}</a>
+                        {% endfor %}
                     </div>
                 </div>
             </li>
+            {% endfor %}
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
