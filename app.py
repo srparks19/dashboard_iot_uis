@@ -19,8 +19,13 @@ def index():
     return render_template('index.html', topics_values=topics_values)
 
 @app.route('/sensor')
-def buttons():
-    return render_template('sensor.html', topics_values=topics_values)
+def sensor():
+    # Datos de ejemplo para la gráfica
+    data = {
+        'timeStamp': ['2023-05-01', '2023-05-02', '2023-05-03', '2023-05-04', '2023-05-05'],
+        'values': [10, 20, 15, 25, 30]
+    }
+    return render_template('sensor.html', topics_values=topics_values, data=data)
 
 if __name__ == '__main__':
     app.run(debug=True)

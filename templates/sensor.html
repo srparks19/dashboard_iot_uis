@@ -88,7 +88,7 @@
 
         <!-- Area Chart -->
         <div class="col-xl-8 col-lg-7">
-            <div class="card shadow mb-4 bg-dark">
+            <div class="card shadow mb-4 bg-light">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-dark">
                     <h6 class="m-0 font-weight-bold text-white">Earnings Overview</h6>
@@ -110,7 +110,7 @@
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="chart-area">
-                        <canvas id="myAreaChart"></canvas>
+                        <canvas id="grafica"></canvas>
                     </div>
                 </div>
             </div>
@@ -317,6 +317,85 @@
         }
         document.getElementById(sectionId).classList.add('active');
     }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Obtén los datos pasados desde Flask
+    var timeStamp = {{ data['timeStamp']| tojson | safe }};
+    var values = {{ data['values']| tojson | safe }};
+
+    // Crea la gráfica utilizando Chart.js
+    var ctx = document.getElementById('grafica').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: timeStamp,
+            datasets: [{
+                label: 'CO2',
+                data: values,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 2,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'Time Stamp'
+                    }
+                },
+                y: {
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'CO2 Levels'
+                    }
+                }
+            },
+            plugins: {
+                tooltip: {
+                    // Cambia el color del texto del tooltip a blanco
+                    bodyColor: '#CDCDCD',
+                    titleColor: '#CDCDCD'
+                },
+                legend: {
+                    // Cambia el color del texto de la leyenda a blanco
+                    labels: {
+                        color: '#000000'
+                    }
+                },
+                title: {
+                    // Cambia el color del texto del título a blanco
+                    color: '#000000'
+                },
+                scales: {
+                    // Cambia el color del texto de los ejes x e y a blanco
+                    x: {
+                        title: {
+                            color: '#000000'
+                        },
+                        ticks: {
+                            color: '#000000'
+                        }
+                    },
+                    y: {
+                        title: {
+                            color: '#000000'
+                        },
+                        ticks: {
+                            color: '#000000'
+                        }
+                    }
+                }
+            }
+        }
+    });
 </script>
 <!-- /.container-fluid -->
 {% endblock %}
