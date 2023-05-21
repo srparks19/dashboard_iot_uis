@@ -3,7 +3,22 @@
 {{ super() }}
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Dashboard (CO<sub>2</sub>)</h1>
+    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1><br>
+</div>
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <!-- CARD ESTACION -->
+    <div class="">
+        <div class="card border-left-success shadow h-100 py-2 bg-dark">
+            <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Estación: - {{ estacion }}
+                </div>
+            </div>
+            <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Dispositivo: - {{ dispositivo }}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Content Row -->
@@ -43,18 +58,11 @@
             <div class="card-body bg-dark">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Dioxido
-                            de carbono (CO<sub>2</sub>)
+                        <div class="text-xs font-weight-bold text-white text-uppercase mb-1"> {{ dispositivo }}
                         </div>
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-white">28%</div>
-                            </div>
-                            <div class="col">
-                                <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: 28%"
-                                        aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-white">{{ maximoNivel }} ppm</div>
                             </div>
                         </div>
                     </div>
@@ -200,12 +208,7 @@
                             const uisCoordinates = [-73.120787, 7.140800];
 
                             // Datos de ejemplo para el mapa de calor
-                            const heatmapData = [
-                                { lon: -73.120787, lat: 7.140800, value: 10 },
-                                { lon: -73.121000, lat: 7.140500, value: 5 },
-                                { lon: -73.120500, lat: 7.141000, value: 8 },
-                                // ... más datos de ejemplo
-                            ];
+                            const heatmapData = {{data_mapa | tojson }};
 
                             // Crear un mapa
                             const map = new ol.Map({
@@ -267,39 +270,23 @@
                     <table class="table text-white">
                         <thead>
                             <tr>
-                                <th scope="col">Id</th>
+                                <th scope="col">ID sensor</th>
                                 <th scope="col">Oxigeno</th>
-                                <th scope="col">CO<sub>2</sub></th>
+                                <th scope="col">{{ dispositivo }}</th>
                                 <th scope="col">Hora</th>
                                 <th scope="col">Coordenada</th>
-                                <th scope="col">ID sensor</th>
                             </tr>
                         </thead>
                         <tbody>
+                            {% for dato in lista_resultados %}
                             <tr>
-                                <th scope="row">1</th>
-                                <td>texto</td>
-                                <td>texto</td>
-                                <td>texto</td>
-                                <td>texto</td>
+                                <th scope="row">{{ dato['deviceUUID'] }}</th>
+                                <td>{{ dato['values'] }}</td>
+                                <td>{{ dato['values'] }}</td>
+                                <td>{{ dato['timeStamp'] }}</td>
                                 <td>texto</td>
                             </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>texto</td>
-                                <td>texto</td>
-                                <td>texto</td>
-                                <td>texto</td>
-                                <td>texto</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>texto</td>
-                                <td>texto</td>
-                                <td>texto</td>
-                                <td>texto</td>
-                                <td>texto</td>
-                            </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
@@ -331,7 +318,7 @@
         data: {
             labels: timeStamp,
             datasets: [{
-                label: 'CO2',
+                label: 'Nivel medido',
                 data: values,
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',
@@ -354,7 +341,7 @@
                     display: true,
                     title: {
                         display: true,
-                        text: 'CO2 Levels'
+                        text: 'Nivel (ppm)'
                     }
                 }
             },
