@@ -12,7 +12,8 @@
     <title>Diot UIS</title>
 
     <!-- Custom fonts for this template-->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -72,6 +73,10 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             {% for topic_values in topics_values %}
+            {% set excluded_values = ['temperatura', 'latitude', 'longitude'] %}
+            {% set filtered_values = topic_values|dictsort|first|last|rejectattr('value') if
+            topic_values|dictsort|first|last is iterable else [] %}
+            {% if filtered_values %}
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
@@ -81,12 +86,17 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Dispositivos:</h6>
-                        {% for value in topic_values|dictsort|first|last %}
-                        <a class="collapse-item" href="{{ url_for('sensor', estacion=topic_values|dictsort|first|first, dispositivo=value) }}">{{ value }}</a>
+                        {% for value in filtered_values %}
+                        {% if value not in excluded_values %}
+                        <a class="collapse-item"
+                            href="{{ url_for('sensor', estacion=topic_values|dictsort|first|first, dispositivo=value) }}">{{
+                            value }}</a>
+                        {% endif %}
                         {% endfor %}
                     </div>
                 </div>
             </li>
+            {% endif %}
             {% endfor %}
 
             <!-- Sidebar Toggler (Sidebar) -->

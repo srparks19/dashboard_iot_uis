@@ -28,20 +28,18 @@ def sensor(estacion,dispositivo):
     lista_value = []
     lista_resultados = []
     data_mapa = []
-    latitud = 7.131811
-    longitud = -73.120741
 
     # Iterar sobre los documentos y extraer los pares de timeStamp y values
     for documento in documentos:
         timestamp = documento['timeStamp']
         values = documento['values'][dispositivo]
         deviceUUID = documento['deviceUUID']
+        latitud = documento['values']['latitude']
+        longitud = documento['values']['longitude']
         lista_time.append(timestamp)
         lista_value.append(values)
         lista_resultados.append({'timeStamp': timestamp, 'values': values, 'deviceUUID':deviceUUID})
         data_mapa.append({'lon': longitud, 'lat': latitud, 'value':values})
-        longitud+=0.000110
-        latitud+=0.000110
     
     maximoNivel = max(lista_value)
 
