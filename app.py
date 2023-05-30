@@ -26,6 +26,7 @@ def sensor(estacion,dispositivo):
     # Crear una lista para almacenar los pares de timeStamp y values
     lista_time = []
     lista_value = []
+    lista_temperatura = []
     lista_resultados = []
     data_mapa = []
 
@@ -33,12 +34,13 @@ def sensor(estacion,dispositivo):
     for documento in documentos:
         timestamp = documento['timeStamp']
         values = documento['values'][dispositivo]
+        temperatura = documento['values']['temperatura']
         deviceUUID = documento['deviceUUID']
         latitud = documento['values']['latitude']
         longitud = documento['values']['longitude']
         lista_time.append(timestamp)
         lista_value.append(values)
-        lista_resultados.append({'timeStamp': timestamp, 'values': values, 'deviceUUID':deviceUUID})
+        lista_resultados.append({'timeStamp': timestamp, 'values': values, 'deviceUUID':deviceUUID, 'latitude':latitud, 'longitude':longitud, 'temperatura':temperatura})
         data_mapa.append({'lon': longitud, 'lat': latitud, 'value':values})
     
     maximoNivel = max(lista_value)
