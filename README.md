@@ -7,8 +7,8 @@ Se decidió desarrollar una página web como medio de visualización de los dato
 
 En el diseño del prototipo se construyó una arquitectura de software capaz de alcanzar los objetivos planteados en secciones anteriores, este proceso se fue modificando y complementando a medida que la construcción del aplicativo avanzaba obteniendo la versión del prototipo actual que cubre las necesidades planteadas. La arquitectura cuenta de dos componentes principales.
 
-El Hardware: El cual se puede encontrar explicado en el siquiente enlace: <a href="https://github.com/srparks19/prototipo_IoT_Uis">Aqui</a>
-El software: Donde se almacenará, recopilará y visualizará la información. 
+- El Hardware: El cual se puede encontrar explicado en el siquiente enlace: <a href="https://github.com/srparks19/prototipo_IoT_Uis">Aqui</a>
+- El software: Donde se almacenará, recopilará y visualizará la información. 
 
 ![Imagen ilustrativa de la arquitectura del prototipo](https://github.com/srparks19/dashboard_iot_uis/assets/66749108/950a8227-75e2-4a18-ae36-2bb617805ee6)
 
